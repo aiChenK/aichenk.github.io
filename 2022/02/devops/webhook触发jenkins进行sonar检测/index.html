@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="aiChenK"><title>webhook触发jenkins进行sonar检测 · Kay's Blog</title><meta name="description" content="目的jenkins仅需创建一个job，git推送后自动进行sonar代码检测并上传到sonarqube
+jenkins插件
+已按社区推荐安装基本插件
+
+
+Generic Webhook Trigger
+SonarQube Scanner
+
+准备工作
+sonar生成令牌
+
+登录后右上角点击”头像 &amp;g"><meta name="keywords" content="Blog,博客,aiChenK"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.webp"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/insight.css"><link rel="stylesheet" href="/css/search.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="page-top animated fadeInDown"><div class="nav"><li> <a href="/">首页</a></li><li> <a href="/archives">归档</a></li><li> <a href="/tags">标签</a></li><li> <a href="/about">关于</a></li><li> <a href="/links">友链</a></li></div><div class="information"><div class="nav_right_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li><li><a class="fa fa-search" onclick="openWindow();"></a></li></div><div class="avatar"><img src="/images/logo.jpeg"></div></div></div><div class="sidebar animated fadeInDown"><div class="sidebar-top"><div class="logo-title"><div class="title"><img src="/images/logo@2x.jpeg" style="width:200px;" alt="favicon"><h3 title=""><a href="/">Kay's Blog</a></h3></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/aiChenK"><i class="fa fa-github"></i></a></li><li><a href="mailto:aichenk@qq.com"><i class="fa fa-envelope"></i></a></li><li><a target="_blank" rel="noopener" href="https://zhihu.com/people/jin-xin-4-68"><i class="fa fa-mortar-board"></i></a></li></ul></div></div><div class="footer"><div class="p"> <span>  </span><i class="fa fa-star"></i><span> aiChenK</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><span>Anatolo </span></div><div class="beian"></div></div></div><div class="main"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>webhook触发jenkins进行sonar检测</a></h3></div><div class="post-content"><p><h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>jenkins仅需创建一个job，git推送后自动进行sonar代码检测并上传到sonarqube</p>
+<h3 id="jenkins插件"><a href="#jenkins插件" class="headerlink" title="jenkins插件"></a>jenkins插件</h3><blockquote>
+<p>已按社区推荐安装基本插件</p>
+</blockquote>
+<ul>
+<li>Generic Webhook Trigger</li>
+<li>SonarQube Scanner</li>
+</ul>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
+<li><p>sonar生成令牌</p>
+<ul>
+<li><p>登录后右上角点击”<strong>头像 &gt; 我的账号 &gt; 安全</strong>“</p>
+</li>
+<li><p>生成令牌并<strong>复制保存</strong></p>
+<p><img src="http://qiniu.aichenk.com/img/image-20220214140155465.png" alt="image-20220214140155465"></p>
+</li>
+</ul>
+</li>
+<li><p>将令牌添加到jenkins凭证中 “系统管理 &gt; 管理凭证 &gt; 添加凭证”</p>
+<ul>
+<li><p>类型选择<strong>Secret text</strong></p>
+</li>
+<li><p>令牌粘贴到<strong>Secret</strong>框中，ID及描述可自行设置成想要的</p>
+<p><img src="https://qiniu.aichenk.com/img/image-20220214141136238.png" alt="image-20220214141136238"></p>
+</li>
+</ul>
+</li>
+<li><p>jenkins添加SonarQube Server “系统管理 &gt; 系统配置 &gt; SonarQube servers”</p>
+<ul>
+<li><p>定义name及sonarqube地址，选中刚创建的凭证，点击保存（这里name我命名‘SonarQube’）</p>
+<p><img src="https://qiniu.aichenk.com/img/image-20220214141438132.png" alt="image-20220214141438132"></p>
+</li>
+</ul>
+</li>
+<li><p>jenkins添加Sonar Scanner “系统管理 &gt; 全局工具配置 &gt; SonarQube Scanner”</p>
+<ul>
+<li><p>定义name，勾选自动安装，版本选最新即可，点击保存</p>
+<p><img src="https://qiniu.aichenk.com/img/image-20220214141806632.png" alt="image-20220214141806632"></p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="创建jenkins-job"><a href="#创建jenkins-job" class="headerlink" title="创建jenkins job"></a>创建jenkins job</h3><ol>
+<li><p>新建job，选择流水线</p>
+</li>
+<li><p>“构建触发器”选中”Generic Webhook Trigger”</p>
+<ul>
+<li>复制<strong><a target="_blank" rel="noopener" href="http://jenkins_url/generic-webhook-trigger/invoke">http://JENKINS_URL/generic-webhook-trigger/invoke</a></strong>备用，作为触发地址（JENKINS_URL需替换成自己的jenkins地址）</li>
+<li><strong>Post content parameters</strong>提取需要用的参数</li>
+<li><strong>github</strong>如下</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>variable</th>
+<th>expression</th>
+<th>expressionType</th>
+<th>defaultValue</th>
+<th>regexpFilter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>project_name</td>
+<td>$.repository.name</td>
+<td>JSONPath</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ssh_url</td>
+<td>$.repository.ssh_url</td>
+<td>JSONPath</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ref</td>
+<td>$.ref</td>
+<td>JSONPath</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>gitlab</strong>如下</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>variable</th>
+<th>expression</th>
+<th>expressionType</th>
+<th>defaultValue</th>
+<th>regexpFilter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>project_name</td>
+<td>$.project.name</td>
+<td>JSONPath</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ssh_url</td>
+<td>$.project.git_ssh_url</td>
+<td>JSONPath</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ref</td>
+<td>$.ref</td>
+<td>JSONPath</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>定义<strong>Token</strong>，不同token可触发不同job（若token相同则触发多个job）</li>
+</ul>
+</li>
+<li><p>定义<strong>流水线</strong></p>
+  <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any</span><br><span class="line"></span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">&#x27;Check Out!&#x27;</span>) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                script &#123;</span><br><span class="line">                    <span class="comment">//解析分支</span></span><br><span class="line">                    arr = <span class="string">&quot;$&#123;env.ref&#125;&quot;</span>.split(<span class="string">&quot;refs/heads/&quot;</span>) <span class="keyword">as</span> List</span><br><span class="line">                    currentBranch = arr[<span class="number">1</span>]</span><br><span class="line">                &#125;</span><br><span class="line">                git <span class="attr">branch:</span> currentBranch, <span class="attr">credentialsId:</span> <span class="string">&#x27;343aa12a-92a3-4797-a9ea-a8facb4db380&#x27;</span>, <span class="attr">url:</span> <span class="string">&#x27;$&#123;ssh_url&#125;&#x27;</span> <span class="comment">//credentialsId为ssh私钥，用于拉git代码</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        stage(<span class="string">&#x27;Sonar Scan!&#x27;</span>) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                script &#123;</span><br><span class="line">                    sonarqubeScannerHome = tool <span class="attr">name:</span> <span class="string">&#x27;SonarQube Scanner&#x27;</span>	<span class="comment">//准备工作第4步的name</span></span><br><span class="line">                    withSonarQubeEnv(<span class="string">&#x27;SonarQube&#x27;</span>) &#123;	<span class="comment">//准备工作第3步的name，只有一个时可省略</span></span><br><span class="line">                         sh <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                             $&#123;sonarqubeScannerHome&#125;/bin/sonar-scanner \</span></span><br><span class="line"><span class="string">                                -Dsonar.projectKey=$&#123;project_name&#125; \</span></span><br><span class="line"><span class="string">                                -Dsonar.projectName=$&#123;project_name&#125; \</span></span><br><span class="line"><span class="string">                                -Dsonar.sources=./</span></span><br><span class="line"><span class="string">                         &quot;&quot;&quot;</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="定义webhook（github为例）"><a href="#定义webhook（github为例）" class="headerlink" title="定义webhook（github为例）"></a>定义webhook（github为例）</h3><ol>
+<li><p>打开项目”Settings &gt; Webhooks”</p>
+</li>
+<li><p>写入url及创建job第二步的token（注意token在url后）</p>
+<p><img src="https://qiniu.aichenk.com/img/image-20220214150056605.png" alt="image-20220214150056605"></p>
+</li>
+</ol>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><ul>
+<li>触发push事件后，可看到jenkins开始构建，完成后sonarqube平台也可看到相关报告</li>
+</ul>
+</p><div class="tip">本文著作权归作者所有<br>作者: aiChenK</div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2022-02-14</span><a class="tag" href="/categories/devops/" title="devops">devops </a><i class="fa fa-tag"></i><a class="tag" href="/tags/devops/" title="devops">devops </a><a class="tag" href="/tags/sonar/" title="sonar">sonar </a><a class="tag" href="/tags/jenkins/" title="jenkins">jenkins </a><span class="leancloud_visitors"></span><span>大约574个字, 1分钟54秒读完</span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,https://aichenk.github.io/2022/02/devops/webhook触发jenkins进行sonar检测/,Kay's Blog,webhook触发jenkins进行sonar检测,;"></a></div></div><div class="pagination"><ul class="clearfix"></ul></div><script src="/js/visitors.js"></script></div></div></div></div><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div><script src="/js/baidu-tongji.js"></script></body></html>
