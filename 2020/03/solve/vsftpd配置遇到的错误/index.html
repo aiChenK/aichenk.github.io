@@ -12,13 +12,13 @@ yum安装yum install -y vsftpd
 
 <hr>
 <h2 id="遇到错误-1"><a href="#遇到错误-1" class="headerlink" title="遇到错误 - 1"></a>遇到错误 - 1</h2><ul>
-<li><p>530 Login incorrect.<br><img src="https://gitee.com/aiChenK/img/raw/master/2022/02/20220217164011.png" alt="2022/02/20220217164011"></p>
+<li><p>530 Login incorrect.<br><img src="https://github.com/aichenk/img/raw/master/2022/02/20220217164011.png" alt="2022/02/20220217164011"></p>
 </li>
 <li><p>解决方案<br>编辑文件 &#x2F;etc&#x2F;pam.d&#x2F;vsftpd</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#%PAM-1.0S</span></span><br><span class="line">session optional pam_keyinit.so force revoke</span><br><span class="line">auth required pam_listfile.so item=user sense=deny file=/etc/vsftpd/ftpusers onerr=succeed</span><br><span class="line"><span class="comment"># 注释这行</span></span><br><span class="line"><span class="comment">#auth required pam_shells.so</span></span><br><span class="line">auth include password-auth</span><br><span class="line">account include password-auth</span><br><span class="line">session required pam_loginuid.so</span><br><span class="line">session include password-auth</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="遇到错误-2"><a href="#遇到错误-2" class="headerlink" title="遇到错误 - 2"></a>遇到错误 - 2</h2><ul>
-<li><p>500 OOPS: vsftpd: refusing to run with writable root inside chroot()<br><img src="https://gitee.com/aiChenK/img/raw/master/2022/02/20220217164112.png" alt="2022/02/20220217164112"></p>
+<li><p>500 OOPS: vsftpd: refusing to run with writable root inside chroot()<br><img src="https://github.com/aichenk/img/raw/master/2022/02/20220217164112.png" alt="2022/02/20220217164112"></p>
 </li>
 <li><p>解决方案<br>编辑文件 &#x2F;etc&#x2F;vsftpd&#x2F;vsftpd.conf</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 增加该行</span></span><br><span class="line">allow_writeable_chroot=YES</span><br></pre></td></tr></table></figure></li>
