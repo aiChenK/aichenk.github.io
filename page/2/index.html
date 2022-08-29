@@ -1,4 +1,139 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="aiChenK"><title>Kay's Blog</title><meta name="description" content="正在输入..."><meta name="keywords" content="Blog,博客,aiChenK"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/insight.css"><link rel="stylesheet" href="/css/search.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="page-top animated fadeInDown"><div class="nav"><li> <a href="/">首页</a></li><li> <a href="/archives">归档</a></li><li> <a href="/tags">标签</a></li></div><div class="information"><div class="nav_right_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)" style="display:none;"> </a></li><li><a class="fa fa-search" onclick="openWindow();"></a></li></div><div class="avatar"><img src="/images/logo.jpeg"></div></div></div><div class="sidebar animated fadeInDown"><div class="sidebar-top"><div class="logo-title"><div class="title"><img src="/images/logo@2x.jpeg" style="width:200px;" alt="favicon"><h3 title=""><a href="/">Kay's Blog</a></h3><div class="description"><p>正在输入...</p></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/aiChenK"><i class="fa fa-github"></i></a></li><li><a href="mailto:aichenk@qq.com"><i class="fa fa-envelope"></i></a></li></ul></div></div><div class="footer"><div class="p"> <span> ©2015 </span><i class="fa fa-star"></i><span> aiChenK</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><span>Anatolo </span></div><div class="beian"><img src="/images/gongan.png" style="height:10px;margin-left: 10px;position: relative;top: 1px;"><span style="margin-left: 2px;"></span></div></div></div><div class="main"><div class="autopagerize_page_element"><div class="content"><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/12/solve/php-getenv%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">php getenv无法获取环境变量</a></h3></div><div class="post-content"><div class="card"><p><h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><p>php在<code>nginx+fpm</code>模式下<code>getenv()</code>方法获取到的内容与<code>cli</code>模式下不同</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="aiChenK"><title>Kay's Blog</title><meta name="description" content="正在输入..."><meta name="keywords" content="Blog,博客,aiChenK"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/insight.css"><link rel="stylesheet" href="/css/search.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="page-top animated fadeInDown"><div class="nav"><li> <a href="/">首页</a></li><li> <a href="/archives">归档</a></li><li> <a href="/tags">标签</a></li></div><div class="information"><div class="nav_right_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)" style="display:none;"> </a></li><li><a class="fa fa-search" onclick="openWindow();"></a></li></div><div class="avatar"><img src="/images/logo.jpeg"></div></div></div><div class="sidebar animated fadeInDown"><div class="sidebar-top"><div class="logo-title"><div class="title"><img src="/images/logo@2x.jpeg" style="width:200px;" alt="favicon"><h3 title=""><a href="/">Kay's Blog</a></h3><div class="description"><p>正在输入...</p></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/aiChenK"><i class="fa fa-github"></i></a></li><li><a href="mailto:aichenk@qq.com"><i class="fa fa-envelope"></i></a></li></ul></div></div><div class="footer"><div class="p"> <span> ©2015 </span><i class="fa fa-star"></i><span> aiChenK</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><span>Anatolo </span></div><div class="beian"><img src="/images/gongan.png" style="height:10px;margin-left: 10px;position: relative;top: 1px;"><span style="margin-left: 2px;"></span></div></div></div><div class="main"><div class="autopagerize_page_element"><div class="content"><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2022/02/2022/webhook%E8%A7%A6%E5%8F%91jenkins%E8%BF%9B%E8%A1%8Csonar%E6%A3%80%E6%B5%8B/">webhook触发jenkins进行sonar检测</a></h3></div><div class="post-content"><div class="card"><p><h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>jenkins仅需创建一个job，git推送后自动进行sonar代码检测并上传到sonarqube</p>
+<h3 id="jenkins插件"><a href="#jenkins插件" class="headerlink" title="jenkins插件"></a>jenkins插件</h3><blockquote>
+<p>已按社区推荐安装基本插件</p>
+</blockquote>
+<ul>
+<li>Generic Webhook Trigger</li>
+<li>SonarQube Scanner</li>
+</ul>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
+<li><p>sonar生成令牌</p>
+<ul>
+<li><p>登录后右上角点击”<strong>头像 &gt; 我的账号 &gt; 安全</strong>“</p>
+</li>
+<li><p>生成令牌并<strong>复制保存</strong></p>
+<p><img src="https://github.com/aichenk/img/raw/master/2022/02/image-20220214140155465.png" alt="image-20220214140155465"></p>
+</li>
+</ul>
+</li>
+<li><p>将令牌添加到jenkins凭证中 “系统管理 &gt; 管理凭证 &gt; 添加凭证”</p>
+<ul>
+<li><p>类型选择<strong>Secret text</strong></p>
+</li>
+<li><p>令牌粘贴到<strong>Secret</strong>框中，ID及描述可自行设置成想要的</p>
+<p><img src="https://github.com/aichenk/img/raw/master/2022/02/image-20220214141136238.png" alt="image-20220214141136238"></p>
+</li>
+</ul>
+</li>
+<li><p>jenkins添加SonarQube Server “系统管理 &gt; 系统配置 &gt; SonarQube servers”</p>
+<ul>
+<li><p>定义name及sonarqube地址，选中刚创建的凭证，点击保存（这里name我命名‘SonarQube’）</p>
+<p><img src="https://github.com/aichenk/img/raw/master/2022/02/20220217095143.png" alt="20220217095143"></p>
+</li>
+</ul>
+</li>
+<li><p>jenkins添加Sonar Scanner “系统管理 &gt; 全局工具配置 &gt; SonarQube Scanner”</p>
+<ul>
+<li><p>定义name，勾选自动安装，版本选最新即可，点击保存</p>
+<p><img src="https://github.com/aichenk/img/raw/master/2022/02/image-20220214141806632.png" alt="image-20220214141806632"></p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="创建jenkins-job"><a href="#创建jenkins-job" class="headerlink" title="创建jenkins job"></a>创建jenkins job</h3><ol>
+<li><p>新建job，选择流水线</p>
+</li>
+<li><p>“构建触发器”选中”Generic Webhook Trigger”</p>
+<ul>
+<li>复制<strong><a target="_blank" rel="noopener" href="http://jenkins_url/generic-webhook-trigger/invoke">http://JENKINS_URL/generic-webhook-trigger/invoke</a></strong>备用，作为触发地址（JENKINS_URL需替换成自己的jenkins地址）</li>
+<li><strong>Post content parameters</strong>提取需要用的参数</li>
+<li><strong>github</strong>如下</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>variable</th>
+<th>expression</th>
+<th>expressionType</th>
+<th>defaultValue</th>
+<th>regexpFilter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>project_name</td>
+<td>$.repository.name</td>
+<td>JSONPath</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ssh_url</td>
+<td>$.repository.ssh_url</td>
+<td>JSONPath</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ref</td>
+<td>$.ref</td>
+<td>JSONPath</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>gitlab</strong>如下</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>variable</th>
+<th>expression</th>
+<th>expressionType</th>
+<th>defaultValue</th>
+<th>regexpFilter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>project_name</td>
+<td>$.project.name</td>
+<td>JSONPath</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ssh_url</td>
+<td>$.project.git_ssh_url</td>
+<td>JSONPath</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ref</td>
+<td>$.ref</td>
+<td>JSONPath</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>定义<strong>Token</strong>，不同token可触发不同job（若token相同则触发多个job）</li>
+</ul>
+</li>
+<li><p>定义<strong>流水线</strong></p>
+  <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any</span><br><span class="line"></span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">&#x27;Check Out!&#x27;</span>) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                script &#123;</span><br><span class="line">                    <span class="comment">//解析分支</span></span><br><span class="line">                    arr = <span class="string">&quot;$&#123;env.ref&#125;&quot;</span>.split(<span class="string">&quot;refs/heads/&quot;</span>) <span class="keyword">as</span> List</span><br><span class="line">                    currentBranch = arr[<span class="number">1</span>]</span><br><span class="line">                &#125;</span><br><span class="line">                git <span class="attr">branch:</span> currentBranch, <span class="attr">credentialsId:</span> <span class="string">&#x27;343aa12a-92a3-4797-a9ea-a8facb4db380&#x27;</span>, <span class="attr">url:</span> <span class="string">&#x27;$&#123;ssh_url&#125;&#x27;</span> <span class="comment">//credentialsId为ssh私钥，用于拉git代码</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        stage(<span class="string">&#x27;Sonar Scan!&#x27;</span>) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                script &#123;</span><br><span class="line">                    sonarqubeScannerHome = tool <span class="attr">name:</span> <span class="string">&#x27;SonarQube Scanner&#x27;</span>  <span class="comment">//准备工作第4步的name</span></span><br><span class="line">                    withSonarQubeEnv(<span class="string">&#x27;SonarQube&#x27;</span>) &#123;    <span class="comment">//准备工作第3步的name，只有一个时可省略</span></span><br><span class="line">                         sh <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                             $&#123;sonarqubeScannerHome&#125;/bin/sonar-scanner \</span></span><br><span class="line"><span class="string">                                -Dsonar.projectKey=$&#123;project_name&#125; \</span></span><br><span class="line"><span class="string">                                -Dsonar.projectName=$&#123;project_name&#125; \</span></span><br><span class="line"><span class="string">                                -Dsonar.sources=./</span></span><br><span class="line"><span class="string">                         &quot;&quot;&quot;</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="定义webhook（github为例）"><a href="#定义webhook（github为例）" class="headerlink" title="定义webhook（github为例）"></a>定义webhook（github为例）</h3><ol>
+<li><p>打开项目”Settings &gt; Webhooks”</p>
+</li>
+<li><p>写入url及创建job第二步的token（注意token在url后）</p>
+<p><img src="https://github.com/aichenk/img/raw/master/2022/02/20220217094616.png" alt="20220217094616"></p>
+</li>
+</ol>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><ul>
+<li>触发push事件后，可看到jenkins开始构建，完成后sonarqube平台也可看到相关报告</li>
+</ul>
+</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2022-02-14</span><a class="tag" href="/categories/2022/" title="2022">2022 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/sonar/" title="sonar">sonar </a><a class="tag" href="/tags/jenkins/" title="jenkins">jenkins </a><span class="leancloud_visitors"></span><span>大约574个字, 1分钟54秒读完</span></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/12/2021/php-getenv%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">php getenv无法获取环境变量</a></h3></div><div class="post-content"><div class="card"><p><h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><p>php在<code>nginx+fpm</code>模式下<code>getenv()</code>方法获取到的内容与<code>cli</code>模式下不同</p>
 <h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><ul>
 <li><p>shell下输出<code>HOSTNAME</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ <span class="built_in">echo</span> <span class="variable">$HOSTNAME</span></span><br><span class="line">php-nginx</span><br></pre></td></tr></table></figure>
@@ -12,7 +147,7 @@
 <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>nginx+fpm下环境变量通过nginx的fastcgi传递，所有环境变量需要在nginx配置文件下的<code>fastcgi_params</code>文件指定</p>
 <h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>增加fastcgi_params参数，并重启nginx</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;fastcgi_param  HOSTNAME       php-nginx;&quot;</span> &gt;&gt; /etc/nginx/fastcgi_params</span><br><span class="line"></span><br><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
-</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-12-09</span><a class="tag" href="/categories/solve/" title="solve">solve </a><i class="fa fa-tag"></i><a class="tag" href="/tags/nginx/" title="nginx">nginx </a><a class="tag" href="/tags/php/" title="php">php </a><span class="leancloud_visitors"></span><span>大约147个字, 29秒读完</span></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/09/tutorial/rabbitmq-channel%E6%96%AD%E7%BD%91%E5%90%8E%E6%B2%A1%E6%9C%89%E6%96%AD%E5%BC%80%E6%83%85%E5%86%B5%E8%AE%B0%E5%BD%95/">rabbitmq-channel断网后没有断开情况记录</a></h3></div><div class="post-content"><div class="card"><p><h3 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h3><p>队列中一直有unacked数据</p>
+</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-12-09</span><a class="tag" href="/categories/2021/" title="2021">2021 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/nginx/" title="nginx">nginx </a><a class="tag" href="/tags/php/" title="php">php </a><span class="leancloud_visitors"></span><span>大约147个字, 29秒读完</span></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/09/2021/rabbitmq-channel%E6%96%AD%E7%BD%91%E5%90%8E%E6%B2%A1%E6%9C%89%E6%96%AD%E5%BC%80%E6%83%85%E5%86%B5%E8%AE%B0%E5%BD%95/">rabbitmq-channel断网后没有断开情况记录</a></h3></div><div class="post-content"><div class="card"><p><h3 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h3><p>队列中一直有unacked数据</p>
 <h3 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h3><p>监听队列，使用不自动应答模式，拿到消息不应答，断开网络，关闭进程<br>rabbitmq中channel一直存在，state为idle状态<br>只能强制手动关闭连接</p>
 <h3 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h3><ul>
 <li>rabbitmq对于tcp连接断开的心跳时间？<ul>
@@ -29,48 +164,11 @@
 <p>If a consumer does not ack its delivery for more than the timeout value (30 minutes by default), its channel will be closed with a <code>PRECONDITION_FAILED</code> channel exception. The error will be logged by the node that the consumer was connected to.<br>The timeout value is configurable in [rabbitmq.conf] (in milliseconds):</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 30 minutes in milliseconds</span><br><span class="line">consumer_timeout = 1800000</span><br></pre></td></tr></table></figure>
-</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-09-26</span><a class="tag" href="/categories/tutorial/" title="tutorial">tutorial </a><i class="fa fa-tag"></i><a class="tag" href="/tags/php/" title="php">php </a><a class="tag" href="/tags/rabbitmq/" title="rabbitmq">rabbitmq </a><span class="leancloud_visitors"></span><span>大约190个字, 38秒读完</span></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/09/solve/mac%20pecl%E5%AE%89%E8%A3%85swoole%E5%A4%B1%E8%B4%A5/">mac pecl安装swoole失败：fatal error: 'openssl/ssl.h' file not found</a></h3></div><div class="post-content"><div class="card"><p><p>mac下使用brew安装arm版php7.2，pecl命令安装swoole<br>命令：pecl install swoole<br>发生如下报错</p>
+</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-09-26</span><a class="tag" href="/categories/2021/" title="2021">2021 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/php/" title="php">php </a><a class="tag" href="/tags/rabbitmq/" title="rabbitmq">rabbitmq </a><span class="leancloud_visitors"></span><span>大约190个字, 38秒读完</span></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/09/2021/mac%20pecl%E5%AE%89%E8%A3%85swoole%E5%A4%B1%E8%B4%A5/">mac pecl安装swoole失败：fatal error: 'openssl/ssl.h' file not found</a></h3></div><div class="post-content"><div class="card"><p><p>mac下使用brew安装arm版php7.2，pecl命令安装swoole<br>命令：pecl install swoole<br>发生如下报错</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/private/tmp/pear/temp/swoole/ext-src/php_swoole_private.h:84:2: error: <span class="string">&quot;Enable openssl support, require openssl library&quot;</span></span><br><span class="line"><span class="comment">#error &quot;Enable openssl support, require openssl library&quot;</span></span><br><span class="line"> ^</span><br><span class="line">In file included from /private/tmp/pear/temp/swoole/ext-src/php_swoole.cc:16:</span><br><span class="line">In file included from /private/tmp/pear/temp/swoole/ext-src/php_swoole_cxx.h:20:</span><br><span class="line">In file included from /private/tmp/pear/temp/swoole/ext-src/php_swoole_coroutine.h:22:</span><br><span class="line">In file included from /private/tmp/pear/temp/swoole/include/swoole_coroutine.h:22:</span><br><span class="line">In file included from /private/tmp/pear/temp/swoole/include/swoole_socket.h:33:</span><br><span class="line">/private/tmp/pear/temp/swoole/include/swoole_ssl.h:27:10: fatal error: <span class="string">&#x27;openssl/ssl.h&#x27;</span> file not found</span><br><span class="line"><span class="comment">#include &lt;openssl/ssl.h&gt;</span></span><br><span class="line">         ^~~~~~~~~~~~~~~</span><br><span class="line">2 errors generated.</span><br><span class="line">make: *** [ext-src/php_swoole.lo] Error 1</span><br><span class="line">ERROR: `make<span class="string">&#x27; failed</span></span><br></pre></td></tr></table></figure>
 
 <p>openssl本机已安装，所以只需要提示是否启用openssl指定路径即可（以下路径为brew安装openssl路径）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ pecl install swoole</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"><span class="built_in">enable</span> sockets supports? [no] : <span class="built_in">yes</span></span><br><span class="line"><span class="built_in">enable</span> openssl support? [no] : <span class="built_in">yes</span> --with-openssl-dir=/opt/homebrew/opt/openssl</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-09-05</span><a class="tag" href="/categories/solve/" title="solve">solve </a><i class="fa fa-tag"></i><a class="tag" href="/tags/php/" title="php">php </a><a class="tag" href="/tags/macos/" title="macos">macos </a><a class="tag" href="/tags/swoole/" title="swoole">swoole </a><a class="tag" href="/tags/brew/" title="brew">brew </a><span class="leancloud_visitors"></span><span>大约224个字, 44秒读完</span></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/09/tutorial/tp6%E5%8A%A8%E6%80%81%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/">tp6动态连接数据库</a></h3></div><div class="post-content"><div class="card"><p><h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>tp6连接除database.php配置外的数据库（临时数据库等）</p>
+</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-09-05</span><a class="tag" href="/categories/2021/" title="2021">2021 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/php/" title="php">php </a><a class="tag" href="/tags/macos/" title="macos">macos </a><a class="tag" href="/tags/swoole/" title="swoole">swoole </a><a class="tag" href="/tags/brew/" title="brew">brew </a><span class="leancloud_visitors"></span><span>大约224个字, 44秒读完</span></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/09/2021/tp6%E5%8A%A8%E6%80%81%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/">tp6动态连接数据库</a></h3></div><div class="post-content"><div class="card"><p><h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>tp6连接除database.php配置外的数据库（临时数据库等）</p>
 <h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//use think\facade\Config;</span></span><br><span class="line"><span class="variable">$config</span> = <span class="title class_">Config</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;database&#x27;</span>);</span><br><span class="line"><span class="variable">$config</span>[<span class="string">&#x27;connections&#x27;</span>][<span class="string">&#x27;tmp&#x27;</span>] = [</span><br><span class="line"> <span class="string">&#x27;type&#x27;</span>            =&gt; <span class="string">&#x27;mysql&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;hostname&#x27;</span>        =&gt; <span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;database&#x27;</span>        =&gt; <span class="string">&#x27;test&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;username&#x27;</span>        =&gt; <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;password&#x27;</span>        =&gt; <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;hostport&#x27;</span>        =&gt; <span class="number">3306</span>,</span><br><span class="line"> <span class="string">&#x27;params&#x27;</span>          =&gt; [],</span><br><span class="line"> <span class="string">&#x27;charset&#x27;</span>         =&gt; <span class="string">&#x27;utf8mb4&#x27;</span></span><br><span class="line">];</span><br><span class="line"><span class="title class_">Config</span>::<span class="title function_ invoke__">set</span>(<span class="variable">$config</span>, <span class="string">&#x27;database&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Db</span>::<span class="title function_ invoke__">connect</span>(<span class="string">&#x27;tmp&#x27;</span>)-&gt;<span class="title function_ invoke__">query</span>(<span class="string">&#x27;select * from t limit 1&#x27;</span>);</span><br></pre></td></tr></table></figure>
-</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-09-02</span><a class="tag" href="/categories/tutorial/" title="tutorial">tutorial </a><i class="fa fa-tag"></i><a class="tag" href="/tags/php/" title="php">php </a><a class="tag" href="/tags/thinkphp/" title="thinkphp">thinkphp </a><span class="leancloud_visitors"></span><span>大约116个字, 23秒读完</span></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/07/solve/tp5.0%E5%8D%87%E7%BA%A7tp6.0%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/">tp5.0升级tp6.0遇到的问题处理（部分）</a></h3></div><div class="post-content"><div class="card"><p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
-<li>tp5.0 -&gt; tp5.1 -&gt; tp6.0 都有较大改动，虽然有官方的升级指导文件但是也没有覆盖所有情况</li>
-<li>本次升级的过程也是作为一次尝试，以下问题仅是本人在升级项目中遇到，未包括所有情况</li>
-<li>如果不是必要情况，强烈<strong>不推荐</strong>升级</li>
-</ul>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul>
-<li>路由参数绑定不再支持<strong>按照名称成对解析</strong>（url_param_type）<ul>
-<li>本项可直接查看<a target="_blank" rel="noopener" href="https://www.cnblogs.com/aichenk/p/15008877.html" title="此链接">此链接</a></li>
-</ul>
-</li>
-<li>model不再支持<code>get()/all()</code>方法<ul>
-<li>可以使用<code>find()/select()</code>来作为替换</li>
-<li>若遇到<code>get()</code>参数使用的不是主键，则需配合<code>where()-&gt;find()</code>使用</li>
-</ul>
-</li>
-<li>系统库<code>think\Db | think\Session</code>等需要使用<code>门面</code><ul>
-<li>如<code>think\facade\Session</code>等，具体可查看<a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp5_1/354155" title="此处">此处</a></li>
-</ul>
-</li>
-<li>model中<code>init()</code>方法的模型事件<code>self::beforeInsert(function ($obj) &#123; &#125;)</code>等无法使用<ul>
-<li>更改为<code>public static function onBeforeInsert($obj) &#123;&#125;</code></li>
-</ul>
-</li>
-<li>控制器中<code>$this-&gt;redirect(&#39;/path&#39;); return true;</code>无法使用<ul>
-<li>直接更改为<code>return redirect(&#39;/path&#39;);</code></li>
-</ul>
-</li>
-<li><code>Session</code>需设置为中间件使用</li>
-<li><code>ROOT_PATH | TEMP_PATH | DS</code>等全局变量不可使用<ul>
-<li>可替换为<code>app()-&gt;getRootPath() | app()-&gt;getRuntimePath()</code>等</li>
-</ul>
-</li>
-<li>上传文件<code>validate</code>方法不可用<ul>
-<li>控制器中可使用<code>$this-&gt;validate()</code>或<code>validate()-&gt;check($file)</code></li>
-</ul>
-</li>
-</ul>
-</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-07-14</span><a class="tag" href="/categories/solve/" title="solve">solve </a><i class="fa fa-tag"></i><a class="tag" href="/tags/php/" title="php">php </a><a class="tag" href="/tags/thinkphp/" title="thinkphp">thinkphp </a><span class="leancloud_visitors"></span><span>大约310个字, 1分钟2秒读完</span></div></div></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/">上一页</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/page/3/">下一页</a></li></ul></div></div></div></div><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div><script src="/js/baidu-tongji.js"></script></body></html>
+</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-09-02</span><a class="tag" href="/categories/2021/" title="2021">2021 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/php/" title="php">php </a><a class="tag" href="/tags/thinkphp/" title="thinkphp">thinkphp </a><span class="leancloud_visitors"></span><span>大约116个字, 23秒读完</span></div></div></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/">上一页</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/page/3/">下一页</a></li></ul></div></div></div></div><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div><script src="/js/baidu-tongji.js"></script></body></html>
